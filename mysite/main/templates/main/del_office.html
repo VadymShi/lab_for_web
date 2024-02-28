@@ -1,0 +1,9 @@
+{% include 'main/layout.html' %}
+{% block content %}
+  <h2>Видалити офіс</h2>
+  <form method="post" action="{% url 'del_office' %}">
+    {% csrf_token %}
+    {{ office_form.office }}
+    <button type="submit">Видалити офіс</button>
+  </form>
+{% endblock %}

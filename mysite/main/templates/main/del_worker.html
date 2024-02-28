@@ -1,0 +1,9 @@
+{% include 'main/layout.html' %}
+{% block content %}
+  <h2>Видалити працівника</h2>
+  <form method="post" action="{% url 'delete_worker' %}">
+    {% csrf_token %}
+    {{ worker_form.worker }}
+    <button type="submit">Видалити працівника</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>Інформація про робітників</h1>
+
+    {% for worker in workers %}
+        <h2>Основна інформація про робітника</h2>
+        <p>Ім'я: {{ worker.first_name }}</p>
+        <p>Прізвище: {{ worker.last_name }}</p>
+        <p>Дата народження: {{ worker.date_of_birth }}</p>
+
+        <h2>Інформація про зайнятість</h2>
+        {% for employment in worker.employment_set.all %}
+            <p>Дата прийняття на роботу: {{ employment.hire_date }}</p>
+            <p>Посада: {{ employment.position }}</p>
+            <p>Зарплата: {{ employment.salary }}</p>
+        {% endfor %}
+
+        <h2>Офіси</h2>
+        {% for office in worker.offices.all %}
+            <p>Назва офісу: {{ office.name }}</p>
+            <p>Місце розташування: {{ office.location }}</p>
+        {% endfor %}
+
+        <hr>
+    {% endfor %}
+{% endblock %}

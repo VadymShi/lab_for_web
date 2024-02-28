@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet"  href="{% static 'main/CSS/main.scss' %}">
+
+
+</head>
+
+<body>
+    <aside>
+        <h1>Навігація</h1>
+        <ul>
+            <a href="{% url 'home' %}"><li>Головна сторінка</li></a>
+            <a href="{% url 'addwork' %}"><li>Додати працівника</li></a>
+            <a href="{% url 'delete_worker' %}"><li>Видалити працівника</li></a>
+            <a href="{% url 'addoffice' %}"><li>Додати офіс</li></a>
+            <a href="{% url 'del_office' %}"><li>Видалити офіс</li></a>
+            <a href="{% url 'salary' %}"><li>Cписок робітників</li></a>
+
+        </ul>
+
+    </aside>
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+</body>
+</html>

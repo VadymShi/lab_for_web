@@ -1,0 +1,12 @@
+{% include 'main/layout.html' %}
+{% block content %}
+{% if form_error %}
+    <p>{{ form_error }}</p>
+{% endif %}
+
+<form method="post" action="{% url 'addoffice' %}">
+    {% csrf_token %}
+    {{ office_form.as_p }}
+    <button type="submit">Зберегти</button>
+</form>
+{% endblock %}
