@@ -1,0 +1,20 @@
+{% extends "main/layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+ <div id="header">
+ {% if request.user.is_authenticated %}
+ {% endif %}
+ <span class="user">
+ {% if request.user.is_authenticated %}
+ Hello {{ request.user.first_name|default:request.user.username }},
+ <form method="post" action="{% url "logout" %}">
+  {% csrf_token %}
+  <button type="submit"> logout </button>
+  </form>
+ {% else %}
+ <a href="{% url "login" %}">Log-in</a>
+ {% endif %}
+ </span>
+ </div>
+ <div id="content">
+{% endblock %}

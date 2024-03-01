@@ -7,13 +7,23 @@
     {% endif %}
 
     <form method="post" action="{% url 'addwork' %}">
-        {% csrf_token %}
-        <h2>Основна інформація про працівника</h2>
-        {{ worker_form.as_p }}
+    {% csrf_token %}
+    <h2>Основна інформація про працівника</h2>
+    {{ worker_form.as_p }}
 
-        <h2>Інформація про зайнятість</h2>
-        {{ employment_form.as_p }}
+    <h2>Інформація про зайнятість</h2>
+    {{ employment_form.as_p }}
 
-        <button type="submit">Зберегти</button>
-    </form>
+    <h2>Оберіть офіси</h2>
+    <ul>
+        {% for office in offices %}
+            {% if office.user == request.user %}
+                <li>{{ office.name }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <button type="submit">Зберегти</button>
+</form>
+
 {% endblock %}
